@@ -32,9 +32,9 @@ class Game
 
     #Check whose turn it is
     if player1_turn == true
-      self.currentPlayer = player1
+      @currentPlayer = player1
     else
-      self.currentPlayer = player2
+      @currentPlayer = player2
     end
 
     randomQuestion = questions.sample
@@ -45,7 +45,7 @@ class Game
     self.get_answer(user_answer, randomQuestion[:answer])
 
     #Change user turn
-    self.player1_turn = !player1_turn  
+    @player1_turn = !player1_turn  
   end
 
   def get_answer(answer, correct_answer)
@@ -53,22 +53,22 @@ class Game
       puts "Correct !"
     else 
       puts "Wrong !"
-      self.currentPlayer.loose_life
+     @currentPlayer.loose_life
     end
 
     self.check_gameover
-    puts "P1: #{player1.lives}/3 vs. P2: #{player2.lives}/3"
+    puts "P1: #{player1.lives}/3 vs. P2: #{@player2.lives}/3"
   end
 
   def check_gameover
-    if player1.lives == 0
+    if @player1.lives == 0
       puts "GAME OVER"
-      puts"Player 2 wins with a score of  #{player2.lives}/3"
-      self.game_over = true
-    elsif player2.lives == 0
+      puts"Player 2 wins with a score of  #{@player2.lives}/3"
+      @game_over = true
+    elsif @player2.lives == 0
       puts "GAME OVER"
-      puts"Player 1 wins with a score of  #{player1.lives}/3"
-      self.game_over = true
+      puts"Player 1 wins with a score of  #{@player1.lives}/3"
+     @game_over = true
     end
   end
 
